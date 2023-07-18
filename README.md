@@ -10,6 +10,7 @@ author : 김태훈, 김정원, 박재홍, 이성훈
  
 **OLED 관련**
  - 필요한 라이브러리 : Adafruit_GFX, Adafruit_SSD1306
+ - 상품상세설명참조 : https://www.devicemart.co.kr/goods/view?no=1384296
  - https://m.blog.naver.com/steamedu123/221469846798
  - 예제 : http://www.elecrow.com/download/ELecrow%20OLED96.zip
  - 선 연결 방법(실습2참조) : https://rasino.tistory.com/303
