@@ -3,6 +3,8 @@ arduino_eduthon - Magic Conch
 
 author : 김태훈, 김정원, 박재홍, 이성훈
 
+#Arduino driver - CH340
+ - https://j2hun-1315.tistory.com/19
 
 #아두이노 음성인식 관련
  - 필요한 라이브러리 : MechaSolution Voice Recognition Module
