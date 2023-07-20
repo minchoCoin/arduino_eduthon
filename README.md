@@ -8,7 +8,7 @@ author : 김태훈, 김정원, 박재홍, 이성훈
 
 **아두이노 음성인식 관련**
  - 필요한 라이브러리 : MechaSolution Voice Recognition Module
- - https://blog.naver.com/roboholic84/222739724592
+ - https://blog.naver.com/roboholic84/222739724592 
  -선 연결 : PIN 4, PIN 5
  
 **OLED 관련**
