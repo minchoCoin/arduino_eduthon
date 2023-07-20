@@ -21,8 +21,7 @@ author : 김태훈, 김정원, 박재홍, 이성훈
 **서보모터 관련**
  - 필요한 라이브러리 : Servo
  - https://m.blog.naver.com/no1_devicemart/221980598037 (무한회전 서보모터)
- - https://codingrun.com/110 (180도 서보모터)
- - 
+ - https://codingrun.com/110 (180도 서보모터) 
  - 선 연결 : 6,7
  
 **TTS 관련**
