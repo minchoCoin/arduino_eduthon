@@ -27,6 +27,7 @@ author : 김태훈, 김정원, 박재홍, 이성훈
  - 필요한 라이브러리 : Talkie
  - https://www.arduino.cc/reference/en/libraries/talkie/
  - 선 연결 : 3, 11(앰프를 사용하므로 3번만 사용하고, 11번은 사용하지 않음 - 위 사이트 참조)
+ - 나의 목소리를 아두이노에 출력하기 : https://blog.naver.com/soohan530/221281818870
  
  
  you can download library on library manager
