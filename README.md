@@ -3,6 +3,11 @@ arduino_eduthon - Magic Conch
 
 author : 김태훈, 김정원, 박재홍, 이성훈
 
+**구현해야하는 기능**
+ 1. ...
+ 2. ...
+ 3. ...
+
 **Arduino driver - CH340**
  - https://j2hun-1315.tistory.com/19
 
