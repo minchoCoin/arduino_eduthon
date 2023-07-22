@@ -2,7 +2,7 @@
 Servo servo;
 int angle = 0;
 void setup() {
-  servo.attach(2);    //핀 번호 8번
+  servo.attach(2);    //핀 번호 2번
   servo.write(angle);
 }
 void loop() 
