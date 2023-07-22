@@ -43,3 +43,7 @@ author : 김태훈, 김정원, 박재홍, 이성훈
  **소리감지관련**
  - https://m.blog.naver.com/icbanq/222588844355
  - 핀 연결 : A0
+
+ **스피커 관련**
+ - https://m.blog.naver.com/emperonics/222197590991
+ - 핀 연결 10,11(RX,TX)
