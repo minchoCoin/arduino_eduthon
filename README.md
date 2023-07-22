@@ -39,3 +39,6 @@ author : 김태훈, 김정원, 박재홍, 이성훈
  - DFPlayer_mini 사용하기 :https://deneb21.tistory.com/418
  - 클로바 더빙 사용하기 : https://clovadubbing.naver.com/
  - 선 연결 : 0,1
+
+ **소리감지관련**
+ - https://m.blog.naver.com/icbanq/222588844355
