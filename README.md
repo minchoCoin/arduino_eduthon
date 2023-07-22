@@ -5,8 +5,8 @@ author : 김태훈, 김정원, 박재홍, 이성훈
 
 **구현해야하는 기능**
  1. mp3모듈
- 2. 서브모터(2개)
- 3. ...
+ 2. 서브모터(2개)(2개 축)(고개를 끄덕이는 것, 몸을 상하로 움직이는 기능)
+ 3. 상황에 따른 음성인식
 
 **Arduino driver - CH340**
  - https://j2hun-1315.tistory.com/19
@@ -21,18 +21,17 @@ author : 김태훈, 김정원, 박재홍, 이성훈
  - 상품상세설명참조 : https://www.devicemart.co.kr/goods/view?no=1384296
  - https://m.blog.naver.com/steamedu123/221469846798
  - 예제 : http://www.elecrow.com/download/ELecrow%20OLED96.zip
- - 선 연결 : 9,10,11,12,13 
+ - 선 연결 : 8,9,10,12,13 (11번은 TTS 스피커에 할당됨)
  
 **서보모터 관련**
  - 필요한 라이브러리 : Servo
  - https://m.blog.naver.com/no1_devicemart/221980598037 (무한회전 서보모터)
  - https://codingrun.com/110 (180도 서보모터) 
- - 선 연결 : 2,3
+ - 선 연결 : 6,7
  
 **TTS 관련**
- - 필요한 라이브러리 : DFplayer_mini_mp3
  - DFPlayer_mini 사용하기 :https://deneb21.tistory.com/418
  - 클로바 더빙 사용하기 : https://clovadubbing.naver.com/
- - 선 연결 : 6,7
+ 
  
  you can download library on library manager
