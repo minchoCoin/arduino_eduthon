@@ -10,7 +10,7 @@
 }
 
 void loop (){  
-  mp3_play(1);                         
+  mp3_play(1);                        
   delay(240000);                    
   mp3_next();
   mp3_play(2);                        
