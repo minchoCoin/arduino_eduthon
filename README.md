@@ -4,8 +4,8 @@ arduino_eduthon - Magic Conch
 author : 김태훈, 김정원, 박재홍, 이성훈
 
 **구현해야하는 기능**
- 1. ...
- 2. ...
+ 1. mp3모듈
+ 2. 서브모터(2개)
  3. ...
 
 **Arduino driver - CH340**
