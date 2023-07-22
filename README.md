@@ -35,4 +35,8 @@ author : 김태훈, 김정원, 박재홍, 이성훈
  - 클로바 더빙 사용하기 : https://clovadubbing.naver.com/
  - 선 연결 : 6,7
  
+ **LCD 관련**
+ - 필요한 라이브러리 : LiquidCrystal i2c
+ - https://blog.naver.com/intopion/221481704847
+ - 선 연결 : A4, A5
  you can download library on library manager
