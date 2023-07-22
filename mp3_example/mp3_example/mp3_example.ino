@@ -11,9 +11,18 @@ void setup (){
 
 void loop (){ 
  mp3_play(1);
- delay(240000);
- mp3_next();
+ delay(1000);
  mp3_play(2);
- delay(10000);
+ delay(1000);
+ mp3_play(3);
+delay(1000);
+ mp3_play(4);
+delay(1000);
+ mp3_play(5);
+delay(1000);
+ mp3_play(6);
+delay(1000);
+ mp3_play(7);
+delay(1000);
  mp3_stop(); 
 }
