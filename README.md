@@ -21,7 +21,7 @@ author : 김태훈, 김정원, 박재홍, 이성훈
  - 상품상세설명참조 : https://www.devicemart.co.kr/goods/view?no=1384296
  - https://m.blog.naver.com/steamedu123/221469846798
  - 예제 : http://www.elecrow.com/download/ELecrow%20OLED96.zip
- - 선 연결 : 8,9,10,12,13 (11번은 TTS 스피커에 할당됨)
+ - 선 연결 : 9,10,11,12,13
  
 **서보모터 관련**
  - 필요한 라이브러리 : Servo
@@ -29,9 +29,16 @@ author : 김태훈, 김정원, 박재홍, 이성훈
  - https://codingrun.com/110 (180도 서보모터) 
  - 선 연결 : 6,7
  
-**TTS 관련**
+ **LCD 관련**
+ - 필요한 라이브러리 : LiquidCrystal i2c
+ - https://blog.naver.com/intopion/221481704847
+ - 선 연결 : A4, A5
+ you can download library on library manager
+
+ **TTS 관련**
  - DFPlayer_mini 사용하기 :https://deneb21.tistory.com/418
  - 클로바 더빙 사용하기 : https://clovadubbing.naver.com/
- 
- 
- you can download library on library manager
+ - 선 연결 : 0,1
+
+ **소리감지관련**
+ - https://m.blog.naver.com/icbanq/222588844355
