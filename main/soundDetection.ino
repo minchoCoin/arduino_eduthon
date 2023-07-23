@@ -3,6 +3,8 @@
 int getNoiseStep(){
   int value = analogRead(NOISE_PIN);
 
+  value = value - 1; //error value
+
   if(value<=20) return 0;
   else if(20<value&&value<=25) return 1;
   else if(value<25&&value<=30) return 2;
