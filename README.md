@@ -47,4 +47,4 @@ author : 김태훈, 김정원, 박재홍, 이성훈
 
  **스피커 관련**
  - https://m.blog.naver.com/emperonics/222197590991
- - 핀 연결 10,11(RX,TX)
+ - 핀 연결 : 4,5(RX,TX)
