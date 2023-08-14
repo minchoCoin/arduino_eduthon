@@ -1,6 +1,7 @@
 #include <SoftwareSerial.h> //Library SoftwareSerial
 #include <DFPlayer_Mini_Mp3.h> //Library DFPlayer mini MP3
-SoftwareSerial serial(10, 11); // pin TX, RX
+SoftwareSerial serial(6, 7); // pin TX, RX //mp3
+
 /*
 그래 0
 다시한번 물어봐 1
