@@ -45,6 +45,15 @@ void volumeup(int volume){
 void volumedown(int volume){
     mp3_set_volume(volume-1);
 }
+/*
+그래 0
+다시한번 물어봐 1
+돼 2
+마음대로 해 3
+아니 4
+안돼 5
+하지마 6
+*/
 void mp3_ground(int a){
     mp3_play(a);
     delay(1000);
@@ -146,35 +155,27 @@ bool isExpressionDefault=1;
 //OLED
 
 //voice recognition
-/*
-그래 0
-다시한번 물어봐 1
-돼 2
-마음대로 해 3
-아니 4
-안돼 5
-하지마 6
-*/
+
 int getVoiceRecognition(){
   VOICE_InstructionTypeDef response = voice.getInstruction();
   switch (response) {
-    case VOICE_INSTRUCTION_1: // 1번 명령 인식됨.
+    case VOICE_INSTRUCTION_1: // 1번 명령 인식됨. 코코야
       Serial.println("Voice_1");
       return 1;
       break;
-    case VOICE_INSTRUCTION_2: // 2번 명령 인식됨.
+    case VOICE_INSTRUCTION_2: // 2번 명령 인식됨. 해도될까요?
       Serial.println("Yellow");
       return 2;
       break;
-    case VOICE_INSTRUCTION_3: // 3번 명령 인식됨.
+    case VOICE_INSTRUCTION_3: // 3번 명령 인식됨. 하면안될까요?
       Serial.println("Green");
       return 3;
       break;
-    case VOICE_INSTRUCTION_4: // 4번 명령 인식됨.
+    case VOICE_INSTRUCTION_4: // 4번 명령 인식됨. 춤춰
       Serial.println("White");
       return 4;
       break;
-    case VOICE_INSTRUCTION_5: // 5번 명령 인식됨.
+    case VOICE_INSTRUCTION_5: // 5번 명령 인식됨. 멈춰
       Serial.println("Black");
      return 5;
       break;
@@ -274,10 +275,80 @@ void randAnswer(){
 }
 
 void dance(){
-  display_5();
-  nod(2);
-  shake(2);
-  display_1();
+   int voiceRecognitionNum;
+  while(1){
+    if(getVoiceRecognition()==1){
+      display_4();
+      y_servo.write(90);
+      x_servo.write(45);
+      unsigned long start = millis();
+
+      while(1){
+      voiceRecognitionNum = getVoiceRecognition();
+      if(voiceRecognitionNum == 1) start = millis();
+      
+      if(millis() - start>5000 || voiceRecognitionNum!=0 && voiceRecognitionNum!=1){
+        x_servo.write(90);
+        break;
+      }
+      }
+      if(voiceRecognitionNum == 5){
+        x_servo.write(90);
+        y_servo.write(90);
+        break;
+      }
+
+    }
+
+    switch(getNoiseStep()){
+      case 1:
+        display_1();
+        x_servo.write(45);
+        delay(100);
+        break;
+      case 2:
+        display_3();
+        y_servo.write(45);
+        delay(100);
+        break;
+      case 3:
+        display_4();
+        x_servo.write(135);
+        delay(100);
+        break;
+      case 4:
+        display_5();
+        y_servo.write(135);
+        delay(100);
+        break;
+      case 5:
+      display_1();
+        x_servo.write(25);
+        delay(100);
+        break;
+      case 6:
+      display_3();
+        y_servo.write(25);
+        delay(100);
+        break;
+      case 7:
+       display_4();
+        x_servo.write(155);
+        delay(100);
+        break;
+      case 8:
+       display_5();
+        y_servo.write(155);
+        delay(100);
+        break;
+      default:
+        display_1();
+        x_servo.write(90);
+        y_servo.write(90);
+    }
+
+  }
+  
 }
 
 void loop() {
@@ -295,33 +366,33 @@ void loop() {
   void display_4() : 4번 표정(0w0) 표시
   void display_5() : 5번 표정(>.<) 표시
   void display_6() : 6번 표정(화남) 표시
-  int getVoiceRecognition() : 반환값은 몇번째 말로 인식했는지 알려줌(1~5) 0번은 인식안됨
+  int getVoiceRecognition() : 반환값은 몇번째 말로 인식했는지 알려줌(1~5) 0번은 인식안됨임.(코코야 1 , 해도될까 2, 하면안될까 3, 춤춰4, 멈춰5)
   */
+  int voiceRecognitionNum;
+  if(getVoiceRecognition() == 1){ //코코야를 인식하면
+    display_4();
+    x_servo.write(45); //경청함
+    unsigned long start = millis();
 
-  int voiceRecognitionNum = getVoiceRecognition();
-
-  switch(voiceRecognitionNum){
-    case 1:
-      randAnswer();
-      isExpressionDefault=0;
-      break;
-    case 2:
-      isExpressionDefault=0;
-      break;
-    case 3:
-      isExpressionDefault=0;
-      break;
-    case 4:
-      isExpressionDefault=0;
-      break;
-    case 5:
-      isExpressionDefault=0;
-      break;
-    default:
-      if(!isExpressionDefault){
-        display_1();
-        isExpressionDefault=1;
+    while(1){
+      voiceRecognitionNum = getVoiceRecognition(); //음성인식
+      if(voiceRecognitionNum == 1) start = millis(); // 만약 코코야를 한번 더 말하면 시간 초기화
+      
+      if(millis() - start>5000 || voiceRecognitionNum!=0 && voiceRecognitionNum!=1){ // 말을 안한지 5초가 넘어가거나 음성을 인식하면 break
+        x_servo.write(90);
+        break;
       }
-      break;
+    }
+
+    if(voiceRecognitionNum==2 || voiceRecognitionNum==3){
+      randAnswer(); //해도될까 하면안될까에는 randAnswer
+    }
+    else if(voiceRecognitionNum==4){
+      dance();
+    }
+    else{
+      display_1();
+    }
+
   }
 }
