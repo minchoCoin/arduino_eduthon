@@ -24,13 +24,10 @@ SoftwareSerial mp3_serial(6, 7); // pin TX, RX //mp3
 SoftwareSerial uart_voice(2, 3); //voice recognition
 Mecha_VoiceRecognition voice(&uart_voice);
 
-
+#define NOISE_PIN A0
 
 Servo x_servo;
 Servo y_servo;
-
-
-#define NOISE_PIN A0
 
 //mp3 module
 
@@ -109,6 +106,8 @@ int getNoiseStep(){
 //soundDetection
 
 //OLED
+
+
 void display_1(){
    display.clearDisplay();  // Clear OLED
   display.drawBitmap(0, 0,  exp_1, 128, 64, 1); // drawbitmap (X,Y,*unsigned char,W,H,1)
@@ -141,6 +140,8 @@ void display_6(){
   display.drawBitmap(0, 0,  exp_6, 128, 64, 1); // drawbitmap (X,Y,*unsigned char,W,H,1)
   display.display(); // display OLED
 }
+
+bool isExpressionDefault=1;
 
 //OLED
 
@@ -184,6 +185,7 @@ int getVoiceRecognition(){
       // no data recieved
       break;
   }
+  return 0;
 }
 //voice recognition
 
@@ -229,11 +231,97 @@ void setup() {
   noise_setup();
   display_setup();
   voice_recognition_setup();
-
+  randomSeed(analogRead(0));
 }
 
+//custom
+
+void randAnswer(){
+  int ans = random(7);
+  
+  if(ans==0){
+    display_1();
+    mp3_ground(0);
+    nod(1);
+  }
+  else if(ans==1){
+    display_2();
+    mp3_ground(1);
+  }
+  else if(ans==2){
+    display_3();
+    mp3_ground(2);
+  }
+  else if(ans==3){
+    display_4();
+    mp3_ground(3);
+  }
+  else if(ans==4){
+    display_2();
+    mp3_ground(4);
+    shake(1);
+  }
+  else if(ans==5){
+    display_6();
+    mp3_ground(5);
+    shake(2);
+  }
+  else if(ans==6){
+    display_6();
+    mp3_ground(6);
+    shake(3);
+  }
+}
+
+void dance(){
+  display_5();
+  nod(2);
+  shake(2);
+  display_1();
+}
 
 void loop() {
   // put your main code here, to run repeatedly:
 
+
+  /*
+  void mp3_ground(int a) : a번 mp3 실행 그래 0, 다시한번 물어봐 1, 돼 2 ,마음대로 해 3, 아니 4, 안돼 5, 하지마 6
+  void nod(int count) : count번 끄덕임
+  void shake(int count) : count번 도리도리
+  int getNoiseStep() : 데시벨에 따라 0~8까지 반환
+  void display_1() : 1번 표정(긍정) 표시
+  void display_2() : 3번 표정(부정) 표시
+  void display_3() : 3번 표정(눈웃음) 표시
+  void display_4() : 4번 표정(0w0) 표시
+  void display_5() : 5번 표정(>.<) 표시
+  void display_6() : 6번 표정(화남) 표시
+  int getVoiceRecognition() : 반환값은 몇번째 말로 인식했는지 알려줌(1~5) 0번은 인식안됨
+  */
+
+  int voiceRecognitionNum = getVoiceRecognition();
+
+  switch(voiceRecognitionNum){
+    case 1:
+      randAnswer();
+      isExpressionDefault=0;
+      break;
+    case 2:
+      isExpressionDefault=0;
+      break;
+    case 3:
+      isExpressionDefault=0;
+      break;
+    case 4:
+      isExpressionDefault=0;
+      break;
+    case 5:
+      isExpressionDefault=0;
+      break;
+    default:
+      if(!isExpressionDefault){
+        display_1();
+        isExpressionDefault=1;
+      }
+      break;
+  }
 }
