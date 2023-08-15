@@ -23,6 +23,11 @@ author : 김태훈, 김정원, 박재홍, 이성훈
  - https://m.blog.naver.com/steamedu123/221469846798
  - 예제 : http://www.elecrow.com/download/ELecrow%20OLED96.zip
  - 선 연결 : 9,10,11,12,13
+ - OLED_DC 11
+ - OLED_CS 12
+ - OLED_CLK 10
+ - OLED_MOSI 9
+ - OLED_RESET 13
  
 **서보모터 관련**
  - 필요한 라이브러리 : Servo

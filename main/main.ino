@@ -19,7 +19,7 @@
 Adafruit_SSD1306 display(OLED_MOSI, OLED_CLK, OLED_DC, OLED_RESET, OLED_CS);
 
 
-SoftwareSerial serial(6, 7); // pin TX, RX //mp3
+SoftwareSerial mp3_serial(6, 7); // pin TX, RX //mp3
 
 SoftwareSerial uart_voice(2, 3); //voice recognition
 Mecha_VoiceRecognition voice(&uart_voice);
@@ -28,15 +28,7 @@ Mecha_VoiceRecognition voice(&uart_voice);
 
 Servo x_servo;
 Servo y_servo;
-/*
-그래 0
-다시한번 물어봐 1
-돼 2
-마음대로 해 3
-아니 4
-안돼 5
-하지마 6
-*/
+
 
 #define NOISE_PIN A0
 
@@ -51,10 +43,10 @@ void testmp3(){
 }
 // 딜레이 1초
 void volumeup(int volume){
-    mp3_set_volume(volume+1)
+    mp3_set_volume(volume+1);
 }
 void volumedown(int volume){
-    mp3_set_volume(volume-1)
+    mp3_set_volume(volume-1);
 }
 void mp3_ground(int a){
     mp3_play(a);
@@ -62,6 +54,7 @@ void mp3_ground(int a){
 }
 //sleep 전력 절전 모드 0
 //일반 모드 1
+/*
 void mp3_mode(int mode){
     if(mode==0){
         mp3_sleep();
@@ -70,6 +63,7 @@ void mp3_mode(int mode){
         mp3_outputDevice(DFPLAYER_DEVICE_SD);
     }
 }
+*/
 //mp3 module
 
 //servo
@@ -151,6 +145,15 @@ void display_6(){
 //OLED
 
 //voice recognition
+/*
+그래 0
+다시한번 물어봐 1
+돼 2
+마음대로 해 3
+아니 4
+안돼 5
+하지마 6
+*/
 int getVoiceRecognition(){
   VOICE_InstructionTypeDef response = voice.getInstruction();
   switch (response) {
@@ -184,31 +187,49 @@ int getVoiceRecognition(){
 }
 //voice recognition
 
-void setup() {
-  // put your setup code here, to run once:
-  serial.begin (9600);
- mp3_set_serial (serial); 
- delay(5); 
- mp3_set_volume (20);   //0~30
- delay(1000);
+void mp3_setup(){
+  mp3_serial.begin (9600);
+  mp3_set_serial (mp3_serial); 
+  delay(5); 
+  mp3_set_volume (20);   //0~30
+  delay(1000);
+}
+
+void servo_setup(){
   x_servo.attach(2);
   y_servo.attach(3);
   x_servo.write(90); // 서보모터 초기화
   y_servo.write(90); // 서보모터 초기화
+}
 
-pinMode(NOISE_PIN,INPUT);
+void noise_setup(){
+  pinMode(NOISE_PIN,INPUT);
+}
 
- display.begin(SSD1306_SWITCHCAPVCC);  // Switch OLED
+void display_setup(){
+  display.begin(SSD1306_SWITCHCAPVCC);  // Switch OLED
   display.clearDisplay();  // Clear OLED
   display.drawBitmap(0, 0,  exp_1, 128, 64, 1); // drawbitmap (X,Y,*unsigned char,W,H,1)
   display.display(); // display OLED
+}
 
+void voice_recognition_setup(){
   Serial.begin(14400);
-voice.setDebugOn(&Serial);  // 디버깅 ON, 디버깅을 위한 통신 객체 전달
-voice.setGroup(VOICE_GROUP_1);  // 인식에 사용할 그룹을 1로 설정
-voice.init();                   // voice 객체 초기화
+  voice.setDebugOn(&Serial);  // 디버깅 ON, 디버깅을 위한 통신 객체 전달
+  voice.setGroup(VOICE_GROUP_1);  // 인식에 사용할 그룹을 1로 설정
+  voice.init();                   // voice 객체 초기화
 
-voice.setMode(VOICE_MODE_RECOGNITION);  // 모듈을 인식 모드로 설정
+  voice.setMode(VOICE_MODE_RECOGNITION);  // 모듈을 인식 모드로 설정
+}
+
+void setup() {
+  // put your setup code here, to run once:
+  mp3_setup();
+  servo_setup();
+  noise_setup();
+  display_setup();
+  voice_recognition_setup();
+
 }
 
 
