@@ -235,7 +235,7 @@ void setup() {
   randomSeed(analogRead(0));
 }
 
-//custom
+//custom... maybe student can program these(randAnswer,dance)
 
 void randAnswer(){
   int ans = random(7);
