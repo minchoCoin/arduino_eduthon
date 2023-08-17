@@ -379,6 +379,7 @@ void loop() {
       if(voiceRecognitionNum == 1) start = millis(); // 만약 코코야를 한번 더 말하면 시간 초기화
       
       if(millis() - start>5000 || voiceRecognitionNum!=0 && voiceRecognitionNum!=1){ // 말을 안한지 5초가 넘어가거나 음성을 인식하면 break
+        display_1();
         x_servo.write(90);
         break;
       }
