@@ -67,6 +67,7 @@ void loop() {
       break;
     case VOICE_INSTRUCTION_NOTHING: // 명령 인식되지 않음
       // no data recieved
+     
       break;
   }
 }
